@@ -9,7 +9,7 @@ import 'tw_dark_colors.dart';
 import 'tw_light_colors.dart';
 
 class TWTheme {
-  static final _colors = CustomColorsExtension(
+  static final _defaultColors = CustomColorsExtension(
     primaryColor: TWLightColors.twPrimaryColorOne,
     twColor007AFF: TWLightColors.twColor007AFF,
     twColor00FFFFFF: TWLightColors.twColor00FFFFFF,
@@ -158,7 +158,7 @@ class TWTheme {
       ),
     ),
     extensions: [
-      _colors,
+      _defaultColors,
     ],
   );
 
@@ -203,7 +203,7 @@ class TWTheme {
       ),
     ),
     extensions: [
-      _colors.copyWith(
+      _defaultColors.copyWith(
         twColor1A1C1F: const Color(0xffFFFFFF),
         twColor34383E: const Color(0xffFFFFFF),
         twColor676F7C: const Color(0xff423A67),
@@ -246,7 +246,7 @@ class TWTheme {
   );
   static final ThemeData nationalDayTheme = darkTheme
       .copyWith(scaffoldBackgroundColor: const Color(0xFF00726C), extensions: [
-    _colors.copyWith(
+    _defaultColors.copyWith(
         twColor312E52: TWConstents.remoteColors.containsKey("secondaryColor")
             ? HexColor.fromHex(TWConstents.remoteColors["secondaryColor"])
             : const Color(0xFF00726C),
