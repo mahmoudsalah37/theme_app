@@ -21,9 +21,9 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeData>(
       valueListenable: _notifier,
-      builder: (_, theme, __) {
+      builder: (_, selectedTheme, __) {
         return MaterialApp(
-          theme: theme,
+          theme: selectedTheme,
           darkTheme: TWTheme.darkTheme,
           home: const HomeScreen(),
         );
@@ -59,8 +59,8 @@ class HomeScreen extends StatelessWidget {
           Center(
             child: DropdownMenu<ThemeData>(
               initialSelection: _notifier.value,
-              onSelected: (value) {
-                _notifier.value = value!;
+              onSelected: (newTheme) {
+                _notifier.value = newTheme!;
               },
               dropdownMenuEntries: [
                 DropdownMenuEntry(
