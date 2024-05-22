@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'theme/custom_colors_extension.dart';
+import 'home_screen.dart';
 import 'theme/tw_theme.dart';
 
 void main() {
@@ -14,13 +14,13 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
-final ValueNotifier<ThemeData> _notifier = ValueNotifier(TWTheme.lightTheme);
+final ValueNotifier<ThemeData> notifier = ValueNotifier(TWTheme.lightTheme);
 
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeData>(
-      valueListenable: _notifier,
+      valueListenable: notifier,
       builder: (_, selectedTheme, __) {
         return MaterialApp(
           theme: selectedTheme,
@@ -33,68 +33,78 @@ class _MainAppState extends State<MainApp> {
 
   @override
   void dispose() {
-    _notifier.dispose();
+    notifier.dispose();
     super.dispose();
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-  });
+// class HomeScreen extends StatelessWidget {
+//   const HomeScreen({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context)
-          .extension<CustomColorsExtension>()!
-          .twPrimaryColorOne,
-      appBar: AppBar(
-        title: const Text('New Theme'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: DropdownMenu<ThemeData>(
-              initialSelection: _notifier.value,
-              onSelected: (newTheme) {
-                _notifier.value = newTheme!;
-              },
-              dropdownMenuEntries: [
-                DropdownMenuEntry(
-                    leadingIcon: Icon(
-                      Icons.color_lens,
-                      color: TWTheme.lightTheme
-                          .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
-                    ),
-                    label: 'lightTheme',
-                    value: TWTheme.lightTheme),
-                DropdownMenuEntry(
-                    leadingIcon: Icon(
-                      Icons.color_lens,
-                      color: TWTheme.darkTheme
-                          .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
-                    ),
-                    label: 'darkTheme',
-                    value: TWTheme.darkTheme),
-                DropdownMenuEntry(
-                    leadingIcon: Icon(
-                      Icons.color_lens,
-                      color: TWTheme.nationalDayTheme
-                          .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
-                    ),
-                    label: 'nationalDayTheme',
-                    value: TWTheme.nationalDayTheme),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     final customColorsExtension =
+//         Theme.of(context).extension<CustomColorsExtension>()!;
+//     return Scaffold(
+//       backgroundColor: HexColor.fromHex(
+//           customColorsExtension.colorsModel.primary!.primaryColor!.value!),
+//       appBar: AppBar(
+//         title: const Text('New Theme'),
+//       ),
+//       body: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         crossAxisAlignment: CrossAxisAlignment.stretch,
+//         children: [
+//           Center(
+//             child: DropdownMenu<ThemeData>(
+//               initialSelection: notifier.value,
+//               onSelected: (newTheme) {
+//                 notifier.value = newTheme!;
+//               },
+//               dropdownMenuEntries: [
+//                 DropdownMenuEntry(
+//                     leadingIcon: Icon(
+//                       Icons.color_lens,
+//                       color: HexColor.fromHex(TWTheme.lightTheme
+//                           .extension<CustomColorsExtension>()!
+//                           .colorsModel
+//                           .primary!
+//                           .primaryColor!
+//                           .value!),
+//                     ),
+//                     label: 'lightTheme',
+//                     value: TWTheme.lightTheme),
+//                 DropdownMenuEntry(
+//                     leadingIcon: Icon(
+//                       Icons.color_lens,
+//                       color: HexColor.fromHex(TWTheme.darkTheme
+//                           .extension<CustomColorsExtension>()!
+//                           .colorsModel
+//                           .primary!
+//                           .primaryColor!
+//                           .value!),
+//                     ),
+//                     label: 'darkTheme',
+//                     value: TWTheme.darkTheme),
+//                 DropdownMenuEntry(
+//                     leadingIcon: Icon(
+//                       Icons.color_lens,
+//                       color: HexColor.fromHex(TWTheme.nationalDayTheme
+//                           .extension<CustomColorsExtension>()!
+//                           .colorsModel
+//                           .primary!
+//                           .primaryColor!
+//                           .value!),
+//                     ),
+//                     label: 'nationalDayTheme',
+//                     value: TWTheme.nationalDayTheme),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
