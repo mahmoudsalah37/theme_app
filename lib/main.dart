@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'theme/custom_colors_extension.dart';
 import 'theme/tw_theme.dart';
+import 'tw_constents.dart';
 
 void main() {
   runApp(const MainApp());
@@ -46,9 +47,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context)
+      backgroundColor: HexColor.fromHex(Theme.of(context)
           .extension<CustomColorsExtension>()!
-          .twPrimaryColorOne,
+          .colorsModel
+          .primary!
+          .primaryColor!
+          .value!),
       appBar: AppBar(
         title: const Text('New Theme'),
       ),
@@ -66,27 +70,36 @@ class HomeScreen extends StatelessWidget {
                 DropdownMenuEntry(
                     leadingIcon: Icon(
                       Icons.color_lens,
-                      color: TWTheme.lightTheme
+                      color: HexColor.fromHex(TWTheme.lightTheme
                           .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
+                          .colorsModel
+                          .primary!
+                          .primaryColor!
+                          .value!),
                     ),
                     label: 'lightTheme',
                     value: TWTheme.lightTheme),
                 DropdownMenuEntry(
                     leadingIcon: Icon(
                       Icons.color_lens,
-                      color: TWTheme.darkTheme
+                      color: HexColor.fromHex(TWTheme.darkTheme
                           .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
+                          .colorsModel
+                          .primary!
+                          .primaryColor!
+                          .value!),
                     ),
                     label: 'darkTheme',
                     value: TWTheme.darkTheme),
                 DropdownMenuEntry(
                     leadingIcon: Icon(
                       Icons.color_lens,
-                      color: TWTheme.nationalDayTheme
+                      color: HexColor.fromHex(TWTheme.nationalDayTheme
                           .extension<CustomColorsExtension>()!
-                          .twPrimaryColorOne,
+                          .colorsModel
+                          .primary!
+                          .primaryColor!
+                          .value!),
                     ),
                     label: 'nationalDayTheme',
                     value: TWTheme.nationalDayTheme),
