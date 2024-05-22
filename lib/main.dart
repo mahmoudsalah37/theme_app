@@ -46,13 +46,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColorsExtension =
+        Theme.of(context).extension<CustomColorsExtension>()!;
     return Scaffold(
-      backgroundColor: HexColor.fromHex(Theme.of(context)
-          .extension<CustomColorsExtension>()!
-          .colorsModel
-          .primary!
-          .primaryColor!
-          .value!),
+      backgroundColor: HexColor.fromHex(
+          customColorsExtension.colorsModel.primary!.primaryColor!.value!),
       appBar: AppBar(
         title: const Text('New Theme'),
       ),

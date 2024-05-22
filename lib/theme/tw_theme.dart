@@ -9,7 +9,7 @@ import 'tw_dark_colors.dart';
 import 'tw_light_colors.dart';
 
 class TWTheme {
-  static final _defaultColors = CustomColorsExtension(
+  static final _lighttColors = CustomColorsExtension(
     colorsModel: ColorsModel(
       primary: Primary(
         primaryColor: White(value: '#6B47F5'),
@@ -57,7 +57,7 @@ class TWTheme {
       ),
     ),
     extensions: [
-      _defaultColors,
+      _lighttColors,
     ],
   );
 
@@ -102,10 +102,10 @@ class TWTheme {
       ),
     ),
     extensions: [
-      _defaultColors.copyWith(
-        colorsModel: _defaultColors.colorsModel.copyWith(
-          primary: _defaultColors.colorsModel.primary?.copyWith(
-            primaryColor: _defaultColors.colorsModel.primary?.primaryColor
+      _lighttColors.copyWith(
+        colorsModel: _lighttColors.colorsModel.copyWith(
+          primary: _lighttColors.colorsModel.primary?.copyWith(
+            primaryColor: _lighttColors.colorsModel.primary?.primaryColor
                 ?.copyWith(value: '#000000'),
           ),
         ),
@@ -114,11 +114,11 @@ class TWTheme {
   );
   static final ThemeData nationalDayTheme = darkTheme.copyWith(
     extensions: [
-      _defaultColors.copyWith(
-        colorsModel: _defaultColors.colorsModel.copyWith(
-          primary: _defaultColors.colorsModel.primary?.copyWith(
-            primaryColor: _defaultColors.colorsModel.primary?.primaryColor
-                ?.copyWith(value: '#ffffff'),
+      _lighttColors.copyWith(
+        colorsModel: _lighttColors.colorsModel.copyWith(
+          primary: _lighttColors.colorsModel.primary?.copyWith(
+            primaryColor: _lighttColors.colorsModel.primary?.primaryColor
+                ?.copyWith(value: '#007500'),
           ),
         ),
       ),
