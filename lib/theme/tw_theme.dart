@@ -11,10 +11,10 @@ import 'tw_light_colors.dart';
 class TWTheme {
   static final _commonColors = CustomColorsExtension(
     colorsModel: ColorsModel(
-      primary: Primary(
-        primaryColor: White(value: '#6B47F5'),
-      ),
-    ),
+        primary: Primary(
+          primaryColor: White(value: '#ffffff'),
+        ),
+        button: Button(secondaryButton: White(value: '#6B47F5'))),
   );
 
   static final ThemeData lightTheme = ThemeData(
@@ -104,11 +104,14 @@ class TWTheme {
     extensions: [
       _commonColors.copyWith(
         colorsModel: _commonColors.colorsModel.copyWith(
-          primary: _commonColors.colorsModel.primary?.copyWith(
-            primaryColor: _commonColors.colorsModel.primary?.primaryColor
-                ?.copyWith(value: '#000000'),
-          ),
-        ),
+            primary: _commonColors.colorsModel.primary?.copyWith(
+              primaryColor: _commonColors.colorsModel.primary?.primaryColor
+                  ?.copyWith(value: '#000000'),
+            ),
+            button: _commonColors.colorsModel.button?.copyWith(
+                secondaryButton: _commonColors
+                    .colorsModel.button?.secondaryButton
+                    ?.copyWith(value: '#6B47F5'))),
       ),
     ],
   );
@@ -116,11 +119,14 @@ class TWTheme {
     extensions: [
       _commonColors.copyWith(
         colorsModel: _commonColors.colorsModel.copyWith(
-          primary: _commonColors.colorsModel.primary?.copyWith(
-            primaryColor: _commonColors.colorsModel.primary?.primaryColor
-                ?.copyWith(value: '#007500'),
-          ),
-        ),
+            primary: _commonColors.colorsModel.primary?.copyWith(
+              primaryColor: _commonColors.colorsModel.primary?.primaryColor
+                  ?.copyWith(value: '#007500'),
+            ),
+            button: _commonColors.colorsModel.button?.copyWith(
+                secondaryButton: _commonColors
+                    .colorsModel.button?.secondaryButton
+                    ?.copyWith(value: '#1A4314'))),
       ),
     ],
   );
