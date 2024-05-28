@@ -1,61 +1,65 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
+import '../tw_constents.dart';
+
 ColorsModel colorsModelsFromJson(String str) =>
     ColorsModel.fromJson(json.decode(str));
 
 String colorsModelsToJson(ColorsModel data) => json.encode(data.toJson());
 
 class ColorsModel {
-  final Primary? primary;
-  final Neutral? neutral;
-  final Text? text;
-  final White? white;
-  final Error? secondary;
-  final Bl? bl;
-  final Error? success;
-  final Error? info;
-  final Error? warning;
-  final Error? error;
-  final Loyalty? loyalty;
-  final Button? button;
-  final Map<String, White>? graphics;
-  final ECard? eCard;
-  final Icons? icons;
+  final PrimaryModel primary;
+  final NeutralModel neutral;
+  final TextModel text;
+  final ColorValueModel white;
+  final Color2Model secondary;
+  final BlModel bl;
+  final Color2Model success;
+  final Color2Model info;
+  final Color2Model warning;
+  final Color2Model error;
+  final LoyaltyModel loyalty;
+  final ButtonModel button;
+  final Map<String, ColorValueModel> graphics;
+  final ECardModel eCard;
+  final IconsModel icons;
 
-  ColorsModel({
-    this.primary,
-    this.neutral,
-    this.text,
-    this.white,
-    this.secondary,
-    this.bl,
-    this.success,
-    this.info,
-    this.warning,
-    this.error,
-    this.loyalty,
-    this.button,
-    this.graphics,
-    this.eCard,
-    this.icons,
+  const ColorsModel({
+    this.primary = const PrimaryModel(),
+    this.neutral = const NeutralModel(),
+    this.text = const TextModel(),
+    this.white = const ColorValueModel(),
+    this.secondary = const Color2Model(),
+    this.bl = const BlModel(),
+    this.success = const Color2Model(),
+    this.info = const Color2Model(),
+    this.warning = const Color2Model(),
+    this.error = const Color2Model(),
+    this.loyalty = const LoyaltyModel(),
+    this.button = const ButtonModel(),
+    this.graphics = const <String, ColorValueModel>{},
+    this.eCard = const ECardModel(),
+    this.icons = const IconsModel(),
   });
 
   ColorsModel copyWith({
-    Primary? primary,
-    Neutral? neutral,
-    Text? text,
-    White? white,
-    Error? secondary,
-    Bl? bl,
-    Error? success,
-    Error? info,
-    Error? warning,
-    Error? error,
-    Loyalty? loyalty,
-    Button? button,
-    Map<String, White>? graphics,
-    ECard? eCard,
-    Icons? icons,
+    PrimaryModel? primary,
+    NeutralModel? neutral,
+    TextModel? text,
+    ColorValueModel? white,
+    Color2Model? secondary,
+    BlModel? bl,
+    Color2Model? success,
+    Color2Model? info,
+    Color2Model? warning,
+    Color2Model? error,
+    LoyaltyModel? loyalty,
+    ButtonModel? button,
+    Map<String, ColorValueModel>? graphics,
+    ECardModel? eCard,
+    IconsModel? icons,
   }) =>
       ColorsModel(
         primary: primary ?? this.primary,
@@ -76,77 +80,70 @@ class ColorsModel {
       );
 
   factory ColorsModel.fromJson(Map<String, dynamic> json) => ColorsModel(
-        primary:
-            json["Primary"] == null ? null : Primary.fromJson(json["Primary"]),
-        neutral:
-            json["Neutral"] == null ? null : Neutral.fromJson(json["Neutral"]),
-        text: json["Text"] == null ? null : Text.fromJson(json["Text"]),
-        white: json["White"] == null ? null : White.fromJson(json["White"]),
-        secondary: json["Secondary"] == null
-            ? null
-            : Error.fromJson(json["Secondary"]),
-        bl: json["BL"] == null ? null : Bl.fromJson(json["BL"]),
-        success:
-            json["Success"] == null ? null : Error.fromJson(json["Success"]),
-        info: json["Info"] == null ? null : Error.fromJson(json["Info"]),
-        warning:
-            json["Warning"] == null ? null : Error.fromJson(json["Warning"]),
-        error: json["Error"] == null ? null : Error.fromJson(json["Error"]),
-        loyalty:
-            json["Loyalty"] == null ? null : Loyalty.fromJson(json["Loyalty"]),
-        button: json["Button"] == null ? null : Button.fromJson(json["Button"]),
-        graphics: Map.from(json["Graphics"]!)
-            .map((k, v) => MapEntry<String, White>(k, White.fromJson(v))),
-        eCard: json["eCard"] == null ? null : ECard.fromJson(json["eCard"]),
-        icons: json["Icons"] == null ? null : Icons.fromJson(json["Icons"]),
+        primary: PrimaryModel.fromJson(json["Primary"]),
+        neutral: NeutralModel.fromJson(json["Neutral"]),
+        text: TextModel.fromJson(json["Text"]),
+        white: ColorValueModel.fromJson(json["White"]),
+        secondary: Color2Model.fromJson(json["Secondary"]),
+        bl: BlModel.fromJson(json["BL"]),
+        success: Color2Model.fromJson(json["Success"]),
+        info: Color2Model.fromJson(json["Info"]),
+        warning: Color2Model.fromJson(json["Warning"]),
+        error: Color2Model.fromJson(json["Error"]),
+        loyalty: LoyaltyModel.fromJson(json["Loyalty"]),
+        button: ButtonModel.fromJson(json["Button"]),
+        graphics: Map.from(json["Graphics"]!).map((k, v) =>
+            MapEntry<String, ColorValueModel>(k, ColorValueModel.fromJson(v))),
+        eCard: ECardModel.fromJson(json["eCard"]),
+        icons: IconsModel.fromJson(json["Icons"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Primary": primary?.toJson(),
-        "Neutral": neutral?.toJson(),
-        "Text": text?.toJson(),
-        "White": white?.toJson(),
-        "Secondary": secondary?.toJson(),
-        "BL": bl?.toJson(),
-        "Success": success?.toJson(),
-        "Info": info?.toJson(),
-        "Warning": warning?.toJson(),
-        "Error": error?.toJson(),
-        "Loyalty": loyalty?.toJson(),
-        "Button": button?.toJson(),
-        "Graphics": Map.from(graphics!)
+        "Primary": primary.toJson(),
+        "Neutral": neutral.toJson(),
+        "Text": text.toJson(),
+        "White": white.toJson(),
+        "Secondary": secondary.toJson(),
+        "BL": bl.toJson(),
+        "Success": success.toJson(),
+        "Info": info.toJson(),
+        "Warning": warning.toJson(),
+        "Error": error.toJson(),
+        "Loyalty": loyalty.toJson(),
+        "Button": button.toJson(),
+        "Graphics": Map.from(graphics)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
-        "eCard": eCard?.toJson(),
-        "Icons": icons?.toJson(),
+        "eCard": eCard.toJson(),
+        "Icons": icons.toJson(),
       };
 }
 
-class Bl {
-  final White? general;
-  final White? generalLight;
-  final White? healthLife;
-  final White? healthLifeLight;
-  final White? mobility;
-  final White? mobilityLight;
+class BlModel {
+  final ColorValueModel general;
+  final ColorValueModel generalLight;
+  final ColorValueModel healthLife;
+  final ColorValueModel healthLifeLight;
+  final ColorValueModel mobility;
+  final ColorValueModel mobilityLight;
 
-  Bl({
-    this.general,
-    this.generalLight,
-    this.healthLife,
-    this.healthLifeLight,
-    this.mobility,
-    this.mobilityLight,
+  const BlModel({
+    this.general = const ColorValueModel(),
+    this.generalLight = const ColorValueModel(),
+    this.healthLife = const ColorValueModel(),
+    this.healthLifeLight = const ColorValueModel(),
+    this.mobility = const ColorValueModel(),
+    this.mobilityLight = const ColorValueModel(),
   });
 
-  Bl copyWith({
-    White? general,
-    White? generalLight,
-    White? healthLife,
-    White? healthLifeLight,
-    White? mobility,
-    White? mobilityLight,
+  BlModel copyWith({
+    ColorValueModel? general,
+    ColorValueModel? generalLight,
+    ColorValueModel? healthLife,
+    ColorValueModel? healthLifeLight,
+    ColorValueModel? mobility,
+    ColorValueModel? mobilityLight,
   }) =>
-      Bl(
+      BlModel(
         general: general ?? this.general,
         generalLight: generalLight ?? this.generalLight,
         healthLife: healthLife ?? this.healthLife,
@@ -155,156 +152,135 @@ class Bl {
         mobilityLight: mobilityLight ?? this.mobilityLight,
       );
 
-  factory Bl.fromJson(Map<String, dynamic> json) => Bl(
-        general:
-            json["General"] == null ? null : White.fromJson(json["General"]),
-        generalLight: json["General-Light"] == null
-            ? null
-            : White.fromJson(json["General-Light"]),
-        healthLife: json["Health&Life"] == null
-            ? null
-            : White.fromJson(json["Health&Life"]),
-        healthLifeLight: json["Health&Life-Light"] == null
-            ? null
-            : White.fromJson(json["Health&Life-Light"]),
-        mobility:
-            json["Mobility"] == null ? null : White.fromJson(json["Mobility"]),
-        mobilityLight: json["Mobility-Light"] == null
-            ? null
-            : White.fromJson(json["Mobility-Light"]),
+  factory BlModel.fromJson(Map<String, dynamic> json) => BlModel(
+        general: ColorValueModel.fromJson(json["General"]),
+        generalLight: ColorValueModel.fromJson(json["General-Light"]),
+        healthLife: ColorValueModel.fromJson(json["Health&Life"]),
+        healthLifeLight: ColorValueModel.fromJson(json["Health&Life-Light"]),
+        mobility: ColorValueModel.fromJson(json["Mobility"]),
+        mobilityLight: ColorValueModel.fromJson(json["Mobility-Light"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "General": general?.toJson(),
-        "General-Light": generalLight?.toJson(),
-        "Health&Life": healthLife?.toJson(),
-        "Health&Life-Light": healthLifeLight?.toJson(),
-        "Mobility": mobility?.toJson(),
-        "Mobility-Light": mobilityLight?.toJson(),
+        "General": general.toJson(),
+        "General-Light": generalLight.toJson(),
+        "Health&Life": healthLife.toJson(),
+        "Health&Life-Light": healthLifeLight.toJson(),
+        "Mobility": mobility.toJson(),
+        "Mobility-Light": mobilityLight.toJson(),
       };
 }
 
-class White {
-  final Type? type;
-  final String? value;
+class ColorValueModel {
+  final Color? value;
 
-  White({
-    this.type,
+  const ColorValueModel({
     this.value,
   });
 
-  White copyWith({
-    Type? type,
-    String? value,
+  ColorValueModel copyWith({
+    Color? value,
   }) =>
-      White(
-        type: type ?? this.type,
+      ColorValueModel(
         value: value ?? this.value,
       );
 
-  factory White.fromJson(Map<String, dynamic> json) => White(
-        type: typeValues.map[json["\u0024type"]]!,
-        value: json["\u0024value"],
+  factory ColorValueModel.fromJson(Map<String, dynamic> json) =>
+      ColorValueModel(
+        value: json["\u0024value"] == null
+            ? null
+            : HexColor.fromHex(json["\u0024value"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "\u0024type": typeValues.reverse[type],
-        "\u0024value": value,
+        "\u0024value": value?.toHex(),
       };
 }
 
-enum Type { COLOR }
+class ButtonModel {
+  final ColorValueModel whiteButton;
+  final ColorValueModel secondaryButton;
 
-final typeValues = EnumValues({"color": Type.COLOR});
-
-class Button {
-  final White? whiteButton;
-  final White? secondaryButton;
-
-  Button({
-    this.whiteButton,
-    this.secondaryButton,
+  const ButtonModel({
+    this.whiteButton = const ColorValueModel(),
+    this.secondaryButton = const ColorValueModel(),
   });
 
-  Button copyWith({
-    White? whiteButton,
-    White? secondaryButton,
+  ButtonModel copyWith({
+    ColorValueModel? whiteButton,
+    ColorValueModel? secondaryButton,
   }) =>
-      Button(
+      ButtonModel(
         whiteButton: whiteButton ?? this.whiteButton,
         secondaryButton: secondaryButton ?? this.secondaryButton,
       );
 
-  factory Button.fromJson(Map<String, dynamic> json) => Button(
-        whiteButton: json["White-Button"] == null
-            ? null
-            : White.fromJson(json["White-Button"]),
-        secondaryButton: json["Secondary-Button"] == null
-            ? null
-            : White.fromJson(json["Secondary-Button"]),
+  factory ButtonModel.fromJson(Map<String, dynamic> json) => ButtonModel(
+        whiteButton: ColorValueModel.fromJson(json["White-Button"]),
+        secondaryButton: ColorValueModel.fromJson(json["Secondary-Button"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "White-Button": whiteButton?.toJson(),
-        "Secondary-Button": secondaryButton?.toJson(),
+        "White-Button": whiteButton.toJson(),
+        "Secondary-Button": secondaryButton.toJson(),
       };
 }
 
-class ECard {
-  final White? bg;
+class ECardModel {
+  final ColorValueModel bg;
 
-  ECard({
-    this.bg,
+  const ECardModel({
+    this.bg = const ColorValueModel(),
   });
 
-  ECard copyWith({
-    White? bg,
+  ECardModel copyWith({
+    ColorValueModel? bg,
   }) =>
-      ECard(
+      ECardModel(
         bg: bg ?? this.bg,
       );
 
-  factory ECard.fromJson(Map<String, dynamic> json) => ECard(
-        bg: json["BG"] == null ? null : White.fromJson(json["BG"]),
+  factory ECardModel.fromJson(Map<String, dynamic> json) => ECardModel(
+        bg: ColorValueModel.fromJson(json["BG"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "BG": bg?.toJson(),
+        "BG": bg.toJson(),
       };
 }
 
-class Error {
-  final White? error;
-  final White? light;
-  final White? med;
-  final White? dark;
-  final White? info;
-  final White? secondaryColor;
-  final White? success;
-  final White? warning;
+class Color2Model {
+  final ColorValueModel? error;
+  final ColorValueModel light;
+  final ColorValueModel med;
+  final ColorValueModel dark;
+  final ColorValueModel? info;
+  final ColorValueModel? secondaryColor;
+  final ColorValueModel? success;
+  final ColorValueModel? warning;
 
-  Error({
-    this.error,
-    this.light,
-    this.med,
-    this.dark,
-    this.info,
-    this.secondaryColor,
-    this.success,
-    this.warning,
+  const Color2Model({
+    this.error = const ColorValueModel(),
+    this.light = const ColorValueModel(),
+    this.med = const ColorValueModel(),
+    this.dark = const ColorValueModel(),
+    this.info = const ColorValueModel(),
+    this.secondaryColor = const ColorValueModel(),
+    this.success = const ColorValueModel(),
+    this.warning = const ColorValueModel(),
   });
 
-  Error copyWith({
-    White? error,
-    White? light,
-    White? med,
-    White? dark,
-    White? info,
-    White? secondaryColor,
-    White? success,
-    White? warning,
+  Color2Model copyWith({
+    ColorValueModel? error,
+    ColorValueModel? light,
+    ColorValueModel? med,
+    ColorValueModel? dark,
+    ColorValueModel? info,
+    ColorValueModel? secondaryColor,
+    ColorValueModel? success,
+    ColorValueModel? warning,
   }) =>
-      Error(
+      Color2Model(
         error: error ?? this.error,
         light: light ?? this.light,
         med: med ?? this.med,
@@ -315,26 +291,32 @@ class Error {
         warning: warning ?? this.warning,
       );
 
-  factory Error.fromJson(Map<String, dynamic> json) => Error(
-        error: json["Error"] == null ? null : White.fromJson(json["Error"]),
-        light: json["Light"] == null ? null : White.fromJson(json["Light"]),
-        med: json["Med"] == null ? null : White.fromJson(json["Med"]),
-        dark: json["Dark"] == null ? null : White.fromJson(json["Dark"]),
-        info: json["Info"] == null ? null : White.fromJson(json["Info"]),
+  factory Color2Model.fromJson(Map<String, dynamic> json) => Color2Model(
+        error: json["Error"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Error"]),
+        light: ColorValueModel.fromJson(json["Light"]),
+        med: ColorValueModel.fromJson(json["Med"]),
+        dark: ColorValueModel.fromJson(json["Dark"]),
+        info: json["Info"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Info"]),
         secondaryColor: json["Secondary Color"] == null
             ? null
-            : White.fromJson(json["Secondary Color"]),
-        success:
-            json["Success"] == null ? null : White.fromJson(json["Success"]),
-        warning:
-            json["Warning"] == null ? null : White.fromJson(json["Warning"]),
+            : ColorValueModel.fromJson(json["Secondary Color"]),
+        success: json["Success"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Success"]),
+        warning: json["Warning"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Warning"]),
       );
 
   Map<String, dynamic> toJson() => {
         "Error": error?.toJson(),
-        "Light": light?.toJson(),
-        "Med": med?.toJson(),
-        "Dark": dark?.toJson(),
+        "Light": light.toJson(),
+        "Med": med.toJson(),
+        "Dark": dark.toJson(),
         "Info": info?.toJson(),
         "Secondary Color": secondaryColor?.toJson(),
         "Success": success?.toJson(),
@@ -342,110 +324,105 @@ class Error {
       };
 }
 
-class Icons {
-  final White? dark;
-  final White? light;
+class IconsModel {
+  final ColorValueModel dark;
+  final ColorValueModel light;
 
-  Icons({
-    this.dark,
-    this.light,
+  const IconsModel({
+    this.dark = const ColorValueModel(),
+    this.light = const ColorValueModel(),
   });
 
-  Icons copyWith({
-    White? dark,
-    White? light,
+  IconsModel copyWith({
+    ColorValueModel? dark,
+    ColorValueModel? light,
   }) =>
-      Icons(
+      IconsModel(
         dark: dark ?? this.dark,
         light: light ?? this.light,
       );
 
-  factory Icons.fromJson(Map<String, dynamic> json) => Icons(
-        dark: json["Dark"] == null ? null : White.fromJson(json["Dark"]),
-        light: json["Light"] == null ? null : White.fromJson(json["Light"]),
+  factory IconsModel.fromJson(Map<String, dynamic> json) => IconsModel(
+        dark: ColorValueModel.fromJson(json["Dark"]),
+        light: ColorValueModel.fromJson(json["Light"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Dark": dark?.toJson(),
-        "Light": light?.toJson(),
+        "Dark": dark.toJson(),
+        "Light": light.toJson(),
       };
 }
 
-class Loyalty {
-  final White? vitality;
-  final White? vitalityLight;
-  final White? drive;
-  final White? driveLight;
+class LoyaltyModel {
+  final ColorValueModel vitality;
+  final ColorValueModel vitalityLight;
+  final ColorValueModel drive;
+  final ColorValueModel driveLight;
 
-  Loyalty({
-    this.vitality,
-    this.vitalityLight,
-    this.drive,
-    this.driveLight,
+  const LoyaltyModel({
+    this.vitality = const ColorValueModel(),
+    this.vitalityLight = const ColorValueModel(),
+    this.drive = const ColorValueModel(),
+    this.driveLight = const ColorValueModel(),
   });
 
-  Loyalty copyWith({
-    White? vitality,
-    White? vitalityLight,
-    White? drive,
-    White? driveLight,
+  LoyaltyModel copyWith({
+    ColorValueModel? vitality,
+    ColorValueModel? vitalityLight,
+    ColorValueModel? drive,
+    ColorValueModel? driveLight,
   }) =>
-      Loyalty(
+      LoyaltyModel(
         vitality: vitality ?? this.vitality,
         vitalityLight: vitalityLight ?? this.vitalityLight,
         drive: drive ?? this.drive,
         driveLight: driveLight ?? this.driveLight,
       );
 
-  factory Loyalty.fromJson(Map<String, dynamic> json) => Loyalty(
-        vitality:
-            json["Vitality"] == null ? null : White.fromJson(json["Vitality"]),
-        vitalityLight: json["Vitality-Light"] == null
-            ? null
-            : White.fromJson(json["Vitality-Light"]),
-        drive: json["Drive"] == null ? null : White.fromJson(json["Drive"]),
-        driveLight: json["Drive-Light"] == null
-            ? null
-            : White.fromJson(json["Drive-Light"]),
+  factory LoyaltyModel.fromJson(Map<String, dynamic> json) => LoyaltyModel(
+        vitality: ColorValueModel.fromJson(json["Vitality"]),
+        vitalityLight: ColorValueModel.fromJson(json["Vitality-Light"]),
+        drive: ColorValueModel.fromJson(json["Drive"]),
+        driveLight: ColorValueModel.fromJson(json["Drive-Light"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Vitality": vitality?.toJson(),
-        "Vitality-Light": vitalityLight?.toJson(),
-        "Drive": drive?.toJson(),
-        "Drive-Light": driveLight?.toJson(),
+        "Vitality": vitality.toJson(),
+        "Vitality-Light": vitalityLight.toJson(),
+        "Drive": drive.toJson(),
+        "Drive-Light": driveLight.toJson(),
       };
 }
 
-class Neutral {
-  final White? light;
-  final White? lightgray;
-  final White? silver;
-  final White? darkgray;
-  final White? dimgray;
-  final White? darkslategray;
-  final White? newLight;
+class NeutralModel {
+  final ColorValueModel light;
+  final ColorValueModel lightgray;
+  final ColorValueModel silver;
+  final ColorValueModel darkgray;
+  final ColorValueModel dimgray;
+  final ColorValueModel darkslategray;
+  final ColorValueModel newLight;
 
-  Neutral({
-    this.light,
-    this.lightgray,
-    this.silver,
-    this.darkgray,
-    this.dimgray,
-    this.darkslategray,
-    this.newLight,
+  const NeutralModel({
+    this.light = const ColorValueModel(),
+    this.lightgray = const ColorValueModel(),
+    this.silver = const ColorValueModel(),
+    this.darkgray = const ColorValueModel(),
+    this.dimgray = const ColorValueModel(),
+    this.darkslategray = const ColorValueModel(),
+    this.newLight = const ColorValueModel(),
   });
 
-  Neutral copyWith({
-    White? light,
-    White? lightgray,
-    White? silver,
-    White? darkgray,
-    White? dimgray,
-    White? darkslategray,
-    White? newLight,
+  NeutralModel copyWith({
+    ColorValueModel? light,
+    ColorValueModel? lightgray,
+    ColorValueModel? silver,
+    ColorValueModel? darkgray,
+    ColorValueModel? dimgray,
+    ColorValueModel? darkslategray,
+    ColorValueModel? newLight,
   }) =>
-      Neutral(
+      NeutralModel(
         light: light ?? this.light,
         lightgray: lightgray ?? this.lightgray,
         silver: silver ?? this.silver,
@@ -455,61 +432,53 @@ class Neutral {
         newLight: newLight ?? this.newLight,
       );
 
-  factory Neutral.fromJson(Map<String, dynamic> json) => Neutral(
-        light: json["Light"] == null ? null : White.fromJson(json["Light"]),
-        lightgray: json["Lightgray"] == null
-            ? null
-            : White.fromJson(json["Lightgray"]),
-        silver: json["Silver"] == null ? null : White.fromJson(json["Silver"]),
-        darkgray:
-            json["Darkgray"] == null ? null : White.fromJson(json["Darkgray"]),
-        dimgray:
-            json["Dimgray"] == null ? null : White.fromJson(json["Dimgray"]),
-        darkslategray: json["Darkslategray"] == null
-            ? null
-            : White.fromJson(json["Darkslategray"]),
-        newLight: json["New Light"] == null
-            ? null
-            : White.fromJson(json["New Light"]),
+  factory NeutralModel.fromJson(Map<String, dynamic> json) => NeutralModel(
+        light: ColorValueModel.fromJson(json["Light"]),
+        lightgray: ColorValueModel.fromJson(json["Lightgray"]),
+        silver: ColorValueModel.fromJson(json["Silver"]),
+        darkgray: ColorValueModel.fromJson(json["Darkgray"]),
+        dimgray: ColorValueModel.fromJson(json["Dimgray"]),
+        darkslategray: ColorValueModel.fromJson(json["Darkslategray"]),
+        newLight: ColorValueModel.fromJson(json["New Light"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Light": light?.toJson(),
-        "Lightgray": lightgray?.toJson(),
-        "Silver": silver?.toJson(),
-        "Darkgray": darkgray?.toJson(),
-        "Dimgray": dimgray?.toJson(),
-        "Darkslategray": darkslategray?.toJson(),
-        "New Light": newLight?.toJson(),
+        "Light": light.toJson(),
+        "Lightgray": lightgray.toJson(),
+        "Silver": silver.toJson(),
+        "Darkgray": darkgray.toJson(),
+        "Dimgray": dimgray.toJson(),
+        "Darkslategray": darkslategray.toJson(),
+        "New Light": newLight.toJson(),
       };
 }
 
-class Primary {
-  final White? primaryColor;
-  final White? med;
-  final White? light;
-  final White? dark;
-  final White? logoGrey;
-  final White? logoLightGrey;
+class PrimaryModel {
+  final ColorValueModel primaryColor;
+  final ColorValueModel med;
+  final ColorValueModel light;
+  final ColorValueModel dark;
+  final ColorValueModel logoGrey;
+  final ColorValueModel logoLightGrey;
 
-  Primary({
-    this.primaryColor,
-    this.med,
-    this.light,
-    this.dark,
-    this.logoGrey,
-    this.logoLightGrey,
+  const PrimaryModel({
+    this.primaryColor = const ColorValueModel(),
+    this.med = const ColorValueModel(),
+    this.light = const ColorValueModel(),
+    this.dark = const ColorValueModel(),
+    this.logoGrey = const ColorValueModel(),
+    this.logoLightGrey = const ColorValueModel(),
   });
 
-  Primary copyWith({
-    White? primaryColor,
-    White? med,
-    White? light,
-    White? dark,
-    White? logoGrey,
-    White? logoLightGrey,
+  PrimaryModel copyWith({
+    ColorValueModel? primaryColor,
+    ColorValueModel? med,
+    ColorValueModel? light,
+    ColorValueModel? dark,
+    ColorValueModel? logoGrey,
+    ColorValueModel? logoLightGrey,
   }) =>
-      Primary(
+      PrimaryModel(
         primaryColor: primaryColor ?? this.primaryColor,
         med: med ?? this.med,
         light: light ?? this.light,
@@ -518,59 +487,51 @@ class Primary {
         logoLightGrey: logoLightGrey ?? this.logoLightGrey,
       );
 
-  factory Primary.fromJson(Map<String, dynamic> json) => Primary(
-        primaryColor: json["Primary Color"] == null
-            ? null
-            : White.fromJson(json["Primary Color"]),
-        med: json["Med"] == null ? null : White.fromJson(json["Med"]),
-        light: json["Light"] == null ? null : White.fromJson(json["Light"]),
-        dark: json["Dark"] == null ? null : White.fromJson(json["Dark"]),
-        logoGrey: json["Logo Grey"] == null
-            ? null
-            : White.fromJson(json["Logo Grey"]),
-        logoLightGrey: json["Logo Light Grey"] == null
-            ? null
-            : White.fromJson(json["Logo Light Grey"]),
+  factory PrimaryModel.fromJson(Map<String, dynamic> json) => PrimaryModel(
+        primaryColor: ColorValueModel.fromJson(json["Primary Color"]),
+        med: ColorValueModel.fromJson(json["Med"]),
+        light: ColorValueModel.fromJson(json["Light"]),
+        dark: ColorValueModel.fromJson(json["Dark"]),
+        logoGrey: ColorValueModel.fromJson(json["Logo Grey"]),
+        logoLightGrey: ColorValueModel.fromJson(json["Logo Light Grey"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Primary Color": primaryColor?.toJson(),
-        "Med": med?.toJson(),
-        "Light": light?.toJson(),
-        "Dark": dark?.toJson(),
-        "Logo Grey": logoGrey?.toJson(),
-        "Logo Light Grey": logoLightGrey?.toJson(),
+        "Primary Color": primaryColor.toJson(),
+        "Med": med.toJson(),
+        "Light": light.toJson(),
+        "Dark": dark.toJson(),
+        "Logo Grey": logoGrey.toJson(),
+        "Logo Light Grey": logoLightGrey.toJson(),
       };
 }
 
-class Text {
-  final White? black;
-  final White? darkGray;
+class TextModel {
+  final ColorValueModel black;
+  final ColorValueModel darkGray;
 
-  Text({
-    this.black,
-    this.darkGray,
+  const TextModel({
+    this.black = const ColorValueModel(),
+    this.darkGray = const ColorValueModel(),
   });
 
-  Text copyWith({
-    White? black,
-    White? darkGray,
+  TextModel copyWith({
+    ColorValueModel? black,
+    ColorValueModel? darkGray,
   }) =>
-      Text(
+      TextModel(
         black: black ?? this.black,
         darkGray: darkGray ?? this.darkGray,
       );
 
-  factory Text.fromJson(Map<String, dynamic> json) => Text(
-        black: json["Black"] == null ? null : White.fromJson(json["Black"]),
-        darkGray: json["Dark-Gray"] == null
-            ? null
-            : White.fromJson(json["Dark-Gray"]),
+  factory TextModel.fromJson(Map<String, dynamic> json) => TextModel(
+        black: ColorValueModel.fromJson(json["Black"]),
+        darkGray: ColorValueModel.fromJson(json["Dark-Gray"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Black": black?.toJson(),
-        "Dark-Gray": darkGray?.toJson(),
+        "Black": black.toJson(),
+        "Dark-Gray": darkGray.toJson(),
       };
 }
 

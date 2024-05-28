@@ -1,10 +1,33 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:theme_app/gen/assets.gen.dart';
+import 'package:theme_app/theme/colors_model.dart';
 
 import 'home_screen.dart';
+import 'theme/custom_colors_extension.dart';
 import 'theme/tw_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await _initTheme();
   runApp(const MainApp());
+}
+
+Future<void> _initTheme() async {
+  final lightTheme = await getFileJson(Assets.themes.lightTeme);
+  final darkTheme = await getFileJson(Assets.themes.darkTheme);
+  TWTheme.lightTheme = TWTheme.lightTheme.copyWith(extensions: [
+    CustomColorsExtension(colorsModel: ColorsModel.fromJson(lightTheme))
+  ]);
+  TWTheme.darkTheme = TWTheme.darkTheme.copyWith(extensions: [
+    CustomColorsExtension(colorsModel: ColorsModel.fromJson(darkTheme))
+  ]);
+}
+
+Future<Map<String, dynamic>> getFileJson(String path) async {
+  return json.decode(await rootBundle.loadString(path));
 }
 
 class MainApp extends StatefulWidget {
@@ -37,74 +60,3 @@ class _MainAppState extends State<MainApp> {
     super.dispose();
   }
 }
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final customColorsExtension =
-//         Theme.of(context).extension<CustomColorsExtension>()!;
-//     return Scaffold(
-//       backgroundColor: HexColor.fromHex(
-//           customColorsExtension.colorsModel.primary!.primaryColor!.value!),
-//       appBar: AppBar(
-//         title: const Text('New Theme'),
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         crossAxisAlignment: CrossAxisAlignment.stretch,
-//         children: [
-//           Center(
-//             child: DropdownMenu<ThemeData>(
-//               initialSelection: notifier.value,
-//               onSelected: (newTheme) {
-//                 notifier.value = newTheme!;
-//               },
-//               dropdownMenuEntries: [
-//                 DropdownMenuEntry(
-//                     leadingIcon: Icon(
-//                       Icons.color_lens,
-//                       color: HexColor.fromHex(TWTheme.lightTheme
-//                           .extension<CustomColorsExtension>()!
-//                           .colorsModel
-//                           .primary!
-//                           .primaryColor!
-//                           .value!),
-//                     ),
-//                     label: 'lightTheme',
-//                     value: TWTheme.lightTheme),
-//                 DropdownMenuEntry(
-//                     leadingIcon: Icon(
-//                       Icons.color_lens,
-//                       color: HexColor.fromHex(TWTheme.darkTheme
-//                           .extension<CustomColorsExtension>()!
-//                           .colorsModel
-//                           .primary!
-//                           .primaryColor!
-//                           .value!),
-//                     ),
-//                     label: 'darkTheme',
-//                     value: TWTheme.darkTheme),
-//                 DropdownMenuEntry(
-//                     leadingIcon: Icon(
-//                       Icons.color_lens,
-//                       color: HexColor.fromHex(TWTheme.nationalDayTheme
-//                           .extension<CustomColorsExtension>()!
-//                           .colorsModel
-//                           .primary!
-//                           .primaryColor!
-//                           .value!),
-//                     ),
-//                     label: 'nationalDayTheme',
-//                     value: TWTheme.nationalDayTheme),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
