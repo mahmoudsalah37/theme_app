@@ -16,8 +16,8 @@ void main() async {
 }
 
 Future<void> _initTheme() async {
-  final lightTheme = await getFileData(Assets.themes.lightTeme);
-  final darkTheme = await getFileData(Assets.themes.darkTheme);
+  final lightTheme = await getFileJson(Assets.themes.lightTeme);
+  final darkTheme = await getFileJson(Assets.themes.darkTheme);
   TWTheme.lightTheme = TWTheme.lightTheme.copyWith(extensions: [
     CustomColorsExtension(colorsModel: ColorsModel.fromJson(lightTheme))
   ]);
@@ -26,7 +26,7 @@ Future<void> _initTheme() async {
   ]);
 }
 
-Future<Map<String, dynamic>> getFileData(String path) async {
+Future<Map<String, dynamic>> getFileJson(String path) async {
   return json.decode(await rootBundle.loadString(path));
 }
 
