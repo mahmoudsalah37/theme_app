@@ -1,0 +1,254 @@
+{
+  "Primary": {
+    "Primary Color": {
+      "$type": "color",
+      "$value": "#6B47F5"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#8780F2"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#F8F6FF"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#8F73F2"
+    },
+    "Logo Grey": {
+      "$type": "color",
+      "$value": "#A8A9CF"
+    },
+    "Logo Light Grey": {
+      "$type": "color",
+      "$value": "#D6D1ED"
+    }
+  },
+  "Neutral": {
+    "Light": {
+      "$type": "color",
+      "$value": "#F2F3F5"
+    },
+    "Lightgray": {
+      "$type": "color",
+      "$value": "#D9DCE1"
+    },
+    "Silver": {
+      "$type": "color",
+      "$value": "#B3B9C3"
+    },
+    "Darkgray": {
+      "$type": "color",
+      "$value": "#676F7C"
+    },
+    "Dimgray": {
+      "$type": "color",
+      "$value": "#34383E"
+    },
+    "Darkslategray": {
+      "$type": "color",
+      "$value": "#1A1C1F"
+    },
+    "New Light": {
+      "$type": "color",
+      "$value": "#F8F9FB"
+    }
+  },
+  "Text": {
+    "Black": {
+      "$type": "color",
+      "$value": "#1A1C1F"
+    },
+    "Dark-Gray": {
+      "$type": "color",
+      "$value": "#455560"
+    }
+  },
+  "White": {
+    "$type": "color",
+    "$value": "#FFFFFF"
+  },
+  "Secondary": {
+    "Secondary Color": {
+      "$type": "color",
+      "$value": "#312E52"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#E0DEE7"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#8581B2"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#6C66A4"
+    }
+  },
+  "BL": {
+    "General": {
+      "$type": "color",
+      "$value": "#33E39D"
+    },
+    "General-Light": {
+      "$type": "color",
+      "$value": "#EBFCF5"
+    },
+    "Health&Life": {
+      "$type": "color",
+      "$value": "#FF2E7D"
+    },
+    "Health&Life-Light": {
+      "$type": "color",
+      "$value": "#FFEAF2"
+    },
+    "Mobility": {
+      "$type": "color",
+      "$value": "#FF7312"
+    },
+    "Mobility-Light": {
+      "$type": "color",
+      "$value": "#FFF1E7"
+    }
+  },
+  "Success": {
+    "Success": {
+      "$type": "color",
+      "$value": "#5DB364"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#F0FFF5"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#80D893"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#67BF76"
+    }
+  },
+  "Info": {
+    "Info": {
+      "$type": "color",
+      "$value": "#118CE4"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#E4F1F8"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#6EB9E1"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#59A1DC"
+    }
+  },
+  "Warning": {
+    "Warning": {
+      "$type": "color",
+      "$value": "#FF6D01"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#FFF1E4"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#EE9A51"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#ED873F"
+    }
+  },
+  "Error": {
+    "Error": {
+      "$type": "color",
+      "$value": "#FF4136"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#FFF2F1"
+    },
+    "Med": {
+      "$type": "color",
+      "$value": "#F09D98"
+    },
+    "Dark": {
+      "$type": "color",
+      "$value": "#E3665D"
+    }
+  },
+  "Loyalty": {
+    "Vitality": {
+      "$type": "color",
+      "$value": "#E71757"
+    },
+    "Vitality-Light": {
+      "$type": "color",
+      "$value": "#FEF2F5"
+    },
+    "Drive": {
+      "$type": "color",
+      "$value": "#FF7312"
+    },
+    "Drive-Light": {
+      "$type": "color",
+      "$value": "#FFFAF6"
+    }
+  },
+  "Button": {
+    "White-Button": {
+      "$type": "color",
+      "$value": "#FFFFFF"
+    },
+    "Secondary-Button": {
+      "$type": "color",
+      "$value": "#312E52"
+    }
+  },
+  "Graphics": {
+    "6B47F5": {
+      "$type": "color",
+      "$value": "#6B47F5"
+    },
+    "8F73F2": {
+      "$type": "color",
+      "$value": "#8F73F2"
+    },
+    "D6D1ED": {
+      "$type": "color",
+      "$value": "#D6D1ED"
+    },
+    "A8A9CF": {
+      "$type": "color",
+      "$value": "#A8A9CF"
+    },
+    "312E52": {
+      "$type": "color",
+      "$value": "#312E52"
+    }
+  },
+  "eCard": {
+    "BG": {
+      "$type": "color",
+      "$value": "#312E52"
+    }
+  },
+  "Icons": {
+    "Dark": {
+      "$type": "color",
+      "$value": "#6B47F5"
+    },
+    "Light": {
+      "$type": "color",
+      "$value": "#E1DAFD"
+    }
+  }
+}

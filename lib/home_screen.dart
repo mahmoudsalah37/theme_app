@@ -153,9 +153,6 @@ class HomeScreen extends StatelessWidget {
                       child: const Text('lightTheme')),
                   DropdownMenuItem(
                       value: TWTheme.darkTheme, child: const Text('darkTheme')),
-                  DropdownMenuItem(
-                      value: TWTheme.nationalDayTheme,
-                      child: const Text('nationalDayTheme')),
                 ],
               ),
             ),

@@ -250,14 +250,14 @@ class ECardModel {
 }
 
 class Color2Model {
-  final ColorValueModel error;
+  final ColorValueModel? error;
   final ColorValueModel light;
   final ColorValueModel med;
   final ColorValueModel dark;
-  final ColorValueModel info;
-  final ColorValueModel secondaryColor;
-  final ColorValueModel success;
-  final ColorValueModel warning;
+  final ColorValueModel? info;
+  final ColorValueModel? secondaryColor;
+  final ColorValueModel? success;
+  final ColorValueModel? warning;
 
   const Color2Model({
     this.error = const ColorValueModel(),
@@ -292,25 +292,35 @@ class Color2Model {
       );
 
   factory Color2Model.fromJson(Map<String, dynamic> json) => Color2Model(
-        error: ColorValueModel.fromJson(json["Error"]),
+        error: json["Error"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Error"]),
         light: ColorValueModel.fromJson(json["Light"]),
         med: ColorValueModel.fromJson(json["Med"]),
         dark: ColorValueModel.fromJson(json["Dark"]),
-        info: ColorValueModel.fromJson(json["Info"]),
-        secondaryColor: ColorValueModel.fromJson(json["Secondary Color"]),
-        success: ColorValueModel.fromJson(json["Success"]),
-        warning: ColorValueModel.fromJson(json["Warning"]),
+        info: json["Info"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Info"]),
+        secondaryColor: json["Secondary Color"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Secondary Color"]),
+        success: json["Success"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Success"]),
+        warning: json["Warning"] == null
+            ? null
+            : ColorValueModel.fromJson(json["Warning"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "Error": error.toJson(),
+        "Error": error?.toJson(),
         "Light": light.toJson(),
         "Med": med.toJson(),
         "Dark": dark.toJson(),
-        "Info": info.toJson(),
-        "Secondary Color": secondaryColor.toJson(),
-        "Success": success.toJson(),
-        "Warning": warning.toJson(),
+        "Info": info?.toJson(),
+        "Secondary Color": secondaryColor?.toJson(),
+        "Success": success?.toJson(),
+        "Warning": warning?.toJson(),
       };
 }
 
