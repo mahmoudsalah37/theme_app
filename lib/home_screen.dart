@@ -3,7 +3,6 @@ import 'package:theme_app/main.dart';
 
 import 'theme/custom_colors_extension.dart';
 import 'theme/tw_theme.dart';
-import 'tw_constents.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,10 +11,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final customColorsExtension =
         Theme.of(context).extension<CustomColorsExtension>()!;
-    final primaryColor = HexColor.fromHex(
-        customColorsExtension.colorsModel.primary!.primaryColor!.value!);
-    final secondaryButton = HexColor.fromHex(
-        customColorsExtension.colorsModel.button!.secondaryButton!.value!);
+    final primaryColor =
+        customColorsExtension.colorsModel.primary.primaryColor.value!;
+    final secondaryButton =
+        customColorsExtension.colorsModel.button.secondaryButton.value!;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(

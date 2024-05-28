@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:theme_app/theme/colors_model.dart';
 import 'package:theme_app/theme/custom_colors_extension.dart';
+import 'package:theme_app/tw_constents.dart';
 
 import '../tw_font_manager.dart';
 import 'tw_colors.dart';
@@ -11,10 +12,17 @@ import 'tw_light_colors.dart';
 class TWTheme {
   static final _commonColors = CustomColorsExtension(
     colorsModel: ColorsModel(
-        primary: Primary(
-          primaryColor: White(value: '#ffffff'),
+      primary: PrimaryModel(
+        primaryColor: ColorValueModel(
+          value: HexColor.fromHex('#ffffff'),
         ),
-        button: Button(secondaryButton: White(value: '#6B47F5'))),
+      ),
+      button: ButtonModel(
+        secondaryButton: ColorValueModel(
+          value: HexColor.fromHex('#6B47F5'),
+        ),
+      ),
+    ),
   );
 
   static final ThemeData lightTheme = ThemeData(
@@ -104,14 +112,18 @@ class TWTheme {
     extensions: [
       _commonColors.copyWith(
         colorsModel: _commonColors.colorsModel.copyWith(
-            primary: _commonColors.colorsModel.primary?.copyWith(
-              primaryColor: _commonColors.colorsModel.primary?.primaryColor
-                  ?.copyWith(value: '#000000'),
+            primary: _commonColors.colorsModel.primary.copyWith(
+              primaryColor:
+                  _commonColors.colorsModel.primary.primaryColor.copyWith(
+                value: HexColor.fromHex('#000000'),
+              ),
             ),
-            button: _commonColors.colorsModel.button?.copyWith(
-                secondaryButton: _commonColors
-                    .colorsModel.button?.secondaryButton
-                    ?.copyWith(value: '#6B47F5'))),
+            button: _commonColors.colorsModel.button.copyWith(
+              secondaryButton:
+                  _commonColors.colorsModel.button.secondaryButton.copyWith(
+                value: HexColor.fromHex('#6B47F5'),
+              ),
+            )),
       ),
     ],
   );
@@ -119,14 +131,19 @@ class TWTheme {
     extensions: [
       _commonColors.copyWith(
         colorsModel: _commonColors.colorsModel.copyWith(
-            primary: _commonColors.colorsModel.primary?.copyWith(
-              primaryColor: _commonColors.colorsModel.primary?.primaryColor
-                  ?.copyWith(value: '#007500'),
+          primary: _commonColors.colorsModel.primary.copyWith(
+            primaryColor:
+                _commonColors.colorsModel.primary.primaryColor.copyWith(
+              value: HexColor.fromHex('#116530'),
             ),
-            button: _commonColors.colorsModel.button?.copyWith(
-                secondaryButton: _commonColors
-                    .colorsModel.button?.secondaryButton
-                    ?.copyWith(value: '#1A4314'))),
+          ),
+          button: _commonColors.colorsModel.button.copyWith(
+            secondaryButton:
+                _commonColors.colorsModel.button.secondaryButton.copyWith(
+              value: HexColor.fromHex('#1A4314'),
+            ),
+          ),
+        ),
       ),
     ],
   );
