@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:theme_app/main.dart';
+import 'package:theme_app/theme/colors_extension.dart';
 
-import 'theme/custom_colors_extension.dart';
 import 'theme/tw_theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,12 +9,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customColorsExtension =
-        Theme.of(context).extension<CustomColorsExtension>()!;
-    final primaryColor =
-        customColorsExtension.colorsModel.primary.primaryColor.value!;
+    final primaryColor = context.colorsExtension.primary.primaryColor.value!;
     final secondaryButton =
-        customColorsExtension.colorsModel.button.secondaryButton.value!;
+        context.colorsExtension.button.secondaryButton.value!;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(

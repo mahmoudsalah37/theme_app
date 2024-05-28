@@ -1,13 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import '../tw_constents.dart';
-
-ColorsModel colorsModelsFromJson(String str) =>
-    ColorsModel.fromJson(json.decode(str));
-
-String colorsModelsToJson(ColorsModel data) => json.encode(data.toJson());
 
 class ColorsModel {
   final PrimaryModel primary;
